@@ -1,22 +1,7 @@
 ---
 import ProjectTablet from "../components/ProjectTablet";
 import Layout from "../layouts/Layout.astro";
-
-
-const projects = [
-  {
-    name: "South Shore Mechanical Services",
-    imgUrl: "https://picsum.photos/800/500",
-  },
-  {
-    name: "Captains Lakshore Rentals",
-    imgUrl: "https://picsum.photos/800/500",
-  },
-  {
-    name: "United Way Marquette",
-    imgUrl: "https://picsum.photos/800/500",
-  },
-]
+import projects from '../lib/projects_data.json';
 ---
 
 <Layout title="Projects">
@@ -26,7 +11,7 @@ const projects = [
      <p class="">This is what I have been up to.</p>
       <div class="flex flex-col justify-evenly items-center">
         <!-- mmap through projects by index, assigning the word "left" as the direction for odd indexed projects  and "right for even" -->
-        {projects.map((project, index) => <ProjectTablet project={project} zoomOutDirection={index % 2 === 0 ? "right" : "left"} />)}
+        {projects.map((project, index) => <ProjectTablet client:load project={project} zoomOutDirection={index % 2 === 0 ? "right" : "left"} />)}
       
       </div>
     </div>

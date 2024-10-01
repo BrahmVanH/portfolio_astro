@@ -1,101 +1,86 @@
 ---
 import ProjectCard from './ProjectCard';
-import type {Project} from '../types';
+import type { Project } from '../types';
 
 export let ref: HTMLElement;
 
-
-const projects = [
-  {
-    name: "South Shore Mechanical Services",
-    imgUrl: "https://picsum.photos/800/500",
-  },
-  {
-    name: "Captains Lakshore Rentals",
-    imgUrl: "https://picsum.photos/800/500",
-  },
-  {
-    name: "United Way Marquette",
-    imgUrl: "https://picsum.photos/800/500",
-  },
-]
+import projects from '../lib/projects_data.json';
 ---
 
-<section data-aos="fade-left" data-aos-duration="1000">
-  <div class="w-full flex flex-row justify-end text-2xl text-end [&>span]:mb-4 [&>span]:mr-4">
-    <span>
-      <p >A few of my </p>
-    </span>  
-    <span>
-      <a class="hover:underline" href="/projects">projects.</a>
-    </span>  
-  </div>
-<div id="projects-section" class="scroll-container ">
-
-  <div class="scroll-content  flex flex-row justify-evenly items-center">
-    {projects.map((project) => <ProjectCard project={project} />)}
-  </div>
-</div>
+<section data-aos='fade-left' data-aos-duration='1000'>
+	<div class='w-full flex flex-row justify-end text-2xl text-end [&>span]:mb-4 [&>span]:mr-4'>
+		<span>
+			<p>A few of my</p>
+		</span>
+		<span>
+			<a aria-label='See the rest' data-microtip-position='top' data-microtip-size='small' role='tooltip' class='hover:underline' href='/projects'>projects.</a>
+		</span>
+	</div>
+	<div id='projects-section' class='scroll-container'>
+		<div class='scroll-content flex flex-row justify-evenly items-center'>
+			{projects.map((project) => <ProjectCard client:load project={project} />)}
+		</div>
+	</div>
 </section>
 
 <style>
-  .scroll-container {
-    
-    overflow-x: scroll;
-    position: relative;
-  }
+	.scroll-container {
+		overflow-x: scroll;
+		position: relative;
+	}
 
-  .scroll-content {
-    display: flex;
-    position: sticky;
-    top: 0;
-    animation: scroll-animation linear;
-    animation-timeline: scroll();
-    animation-range: normal;
-  }
+	.scroll-content {
+		display: flex;
+		position: sticky;
+		top: 0;
+		animation: scroll-animation linear;
+		animation-timeline: scroll();
+		animation-range: normal;
+	}
 
-  @keyframes scroll-animation {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-10% + 100vw));
-    }
-  }
+	@keyframes scroll-animation {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-10% + 100vw));
+		}
+	}
 
-  .content-section {
-    flex: 0 0 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    /* Add styling for your sections */
-  }
+	.content-section {
+		flex: 0 0 100vw;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 2rem;
+		/* Add styling for your sections */
+	}
 
- 
-
-   @media (prefers-reduced-motion: no-preference) {
-    .scroll-container {
-      scroll-behavior: smooth;
-    }
-  }
+	@media (prefers-reduced-motion: no-preference) {
+		.scroll-container {
+			scroll-behavior: smooth;
+		}
+	}
 </style>
 
 <script>
-  const projects = document.getElementById("projects-section");
+	const projects = document.getElementById('projects-section');
 
-  if(!projects) {
-    throw new Error("Projects section not found");
-  }
+	if (!projects) {
+		throw new Error('Projects section not found');
+	}
 
-  if (projects) {
-
-    projects.addEventListener('wheel', (e) => {
-      if (e.deltaY !== 0) {
-        e.preventDefault();
-        projects.scrollLeft += e.deltaY;
-      }
-    }, {passive: false})
-  }
+	if (projects) {
+		projects.addEventListener(
+			'wheel',
+			(e) => {
+				if (e.deltaY !== 0) {
+					e.preventDefault();
+					projects.scrollLeft += e.deltaY;
+				}
+			},
+			{ passive: false }
+		);
+	}
 </script>

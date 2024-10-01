@@ -1,0 +1,42 @@
+[
+  {
+    "name": "South Shore Mechanical Services",
+    "imgKey": "ss-mech-svcs-screenshot.png",
+    "techs": [
+      "react",
+      "typescript",
+      "gatsby",
+      "tailwind",
+      "apollo",
+      "graphql",
+      "aws",
+      "node",
+      "express",
+      "mongo"
+    ],
+    "text": "A website for a local Mechanical Contracting company. The app is build with Gatsby and Tailwind and uses a Node Express Lambda function to handle form submissions and image loading."
+  },
+  {
+    "name": "Captains Lakefront Properties",
+    "imgKey": "captains-lakefront-screenshot.webp",
+    "techs": ["react", "apollo", "graphQL", "s3", "node", "express", "mongo"],
+    "text": "A website for a vacation rental company. The application uses the MERN stack and is hosted on Heroku. The app uses AWS S3 for dynamic image loading and a CloudFront CDN."
+  },
+
+  {
+    "name": "Daily Journal App",
+    "imgKey": "daily-journal-screenshot.jpg",
+    "techs": [
+      "react",
+      "typescript",
+      "graphql",
+      "apollo",
+      "aws",
+      "node",
+      "express",
+      "mongo",
+      "serverless"
+    ],
+    "text": "This is a basic daily journal app. It's meant to be a companion to a note app that writes to markdown. The application has a small form and an upload for markdown to render into a journal page."
+  }
+]

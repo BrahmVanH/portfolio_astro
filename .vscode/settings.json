@@ -1,4 +1,7 @@
 {
-	"github.copilot.enableSuggestions": true
+	"github.copilot.enableSuggestions": true,
+	"files.watcherExclude": {
+		"**/target": true
+	}
 	
 }
