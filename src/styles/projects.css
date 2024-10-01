@@ -1,0 +1,33 @@
+ .scroll-container {
+    
+    overflow-x: scroll;
+    position: relative;
+  }
+
+  .scroll-content {
+    display: flex;
+    position: sticky;
+    top: 0;
+    animation: scroll-animation linear;
+    animation-timeline: scroll();
+    animation-range: normal;
+  }
+
+  @keyframes scroll-animation {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% + 100vw));
+    }
+  }
+
+  .content-section {
+    flex: 0 0 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    /* Add styling for your sections */
+  }

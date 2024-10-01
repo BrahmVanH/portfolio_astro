@@ -1,39 +1,47 @@
 ---
 import ProjectCard from './ProjectCard';
+import type {Project} from '../types';
 
-export interface Projects  {
-  name: String,
-  imgUrl?: String,
-  techs?: String[],
-  text?: String
-}
+export let ref: HTMLElement;
+
 
 const projects = [
   {
     name: "South Shore Mechanical Services",
-    imgUrl: "https://picsum.photos/400/224",
+    imgUrl: "https://picsum.photos/800/500",
   },
   {
     name: "Captains Lakshore Rentals",
-    imgUrl: "https://picsum.photos/400/224",
+    imgUrl: "https://picsum.photos/800/500",
   },
   {
     name: "United Way Marquette",
-    imgUrl: "https://picsum.photos/400/224",
+    imgUrl: "https://picsum.photos/800/500",
   },
 ]
 ---
 
-<section class="scroll-container">
-  <div class="scroll-content  flex flex-row justify-evenly align-middle">
+<section data-aos="fade-left" data-aos-duration="1000">
+  <div class="w-full flex flex-row justify-end text-2xl text-end [&>span]:mb-4 [&>span]:mr-4">
+    <span>
+      <p >A few of my </p>
+    </span>  
+    <span>
+      <a class="hover:underline" href="/projects">projects.</a>
+    </span>  
+  </div>
+<div id="projects-section" class="scroll-container ">
+
+  <div class="scroll-content  flex flex-row justify-evenly items-center">
     {projects.map((project) => <ProjectCard project={project} />)}
   </div>
+</div>
 </section>
 
 <style>
   .scroll-container {
-    height: 100vh;
-    overflow-x: clip;
+    
+    overflow-x: scroll;
     position: relative;
   }
 
@@ -41,7 +49,6 @@ const projects = [
     display: flex;
     position: sticky;
     top: 0;
-    height: 100vh;
     animation: scroll-animation linear;
     animation-timeline: scroll();
     animation-range: normal;
@@ -52,7 +59,7 @@ const projects = [
       transform: translateX(0);
     }
     to {
-      transform: translateX(calc(-100% + 100vw));
+      transform: translateX(calc(-10% + 100vw));
     }
   }
 
@@ -65,4 +72,30 @@ const projects = [
     font-size: 2rem;
     /* Add styling for your sections */
   }
+
+ 
+
+   @media (prefers-reduced-motion: no-preference) {
+    .scroll-container {
+      scroll-behavior: smooth;
+    }
+  }
 </style>
+
+<script>
+  const projects = document.getElementById("projects-section");
+
+  if(!projects) {
+    throw new Error("Projects section not found");
+  }
+
+  if (projects) {
+
+    projects.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        projects.scrollLeft += e.deltaY;
+      }
+    }, {passive: false})
+  }
+</script>

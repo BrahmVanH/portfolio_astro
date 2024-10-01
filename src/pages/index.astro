@@ -3,15 +3,142 @@ import Layout from '../layouts/Layout.astro';
 import Greeting from '../components/Greeting.astro';
 import ContactStrip from '../components/ContactStrip.astro';
 import Projects from '../components/Projects.astro';
+
+
+
 ---
 
 <Layout title="Welcome to Astro.">
-	<main class="w-[90%] h-screen absolute top-0 right-0">
-		<div class="w-[90%] h-[80%] shadow-[inset_0_15px_10px_-10px_rgba(0,0,0,0.3),inset_0_-15px_10px_-10px_rgba(0,0,0,0.3)]">
+	<main class="bg-transparent w-[80%]  h-screen p-2  absolute top-0 right-0">
+		<div class="bg-white bg-opacity-70 w-[90%] [&>*]:mt-4 last:mb-4 h-full overflow-y-scroll  rounded-xl border-white shadow-md  shadow-blue-50 ring-2 ring-offset-4 ring-offset-slate-100 bg-[linear-gradient(circle,rgba(1,156,213,0.8128501400560224)_30%,rgba(1,169,184,0.695203081232493)_90%,rgba(116,200,208,0.8548669467787114)_100%)]">
 			<Greeting />
 			<ContactStrip />
-			<Projects />
+			<Projects  />
 		</div>
 	</main>
 </Layout>
+<!-- 
+<script>
+	const projects = projectsRef.querySelector("#projects-section");
+  if (projects) {
 
+    console.log(projects);
+  } else {
+    console.log('no projects');
+  }
+	 if (projects) {
+    projects.addEventListener('wheel', (e) => {
+      const isScrollingRight = e.deltaX > 0;
+      const projectsScrollWidth = projects.scrollWidth - projects.clientWidth;
+      const hasReachedProjectsEnd = projects.scrollLeft >= projectsScrollWidth;
+      const hasReachedProjectsStart = projects.scrollLeft === 0;
+
+
+      console.log("projectsScrollLeft", projects.scrollLeft);
+      
+
+         if(hasReachedProjectsEnd) {
+          console.log('hasReachedProjectsEnd');
+         }
+          if(hasReachedProjectsStart) {
+          console.log('hasReachedProjectsStart');
+          }
+        
+
+
+      if (isScrollingRight && hasReachedProjectsEnd) {
+        return; // Let event bubble to parent
+      }
+      
+      if (!isScrollingRight && hasReachedProjectsStart) {
+        return; // Let event bubble to parent
+      }
+
+      // Otherwise, scroll projects and prevent parent scroll
+      e.stopPropagation();
+    });
+
+     projects.addEventListener('wheel', (e) => {
+       const isScrollingLeft = e.deltaX < 0;
+        const projectsScrollWidth = projects.scrollWidth - projects.clientWidth;
+      const hasReachedProjectsEnd = projects.scrollLeft >= projectsScrollWidth;
+      const hasReachedProjectsStart = projects.scrollLeft === 0;
+
+
+      if(hasReachedProjectsEnd) {
+          console.log('hasReachedProjectsEnd');
+         }
+          if(hasReachedProjectsStart) {
+          console.log('hasReachedProjectsStart');
+          }
+        
+
+           if (isScrollingLeft && hasReachedProjectsStart) {
+        return; 
+      }
+      
+      if (!isScrollingLeft && hasReachedProjectsStart) {
+        return; // Let event bubble to parent
+      }
+      e.stopPropagation();
+
+  },{passive: false});
+  
+  projects.addEventListener('wheel', (e) => {
+        const isScrollingDown = e.deltaY > 0;
+      const projectsScrollHeight = projects.scrollHeight - projects.clientHeight;
+      const hasReachedProjectsBottom = projects.scrollTop >= projectsScrollHeight;
+      const hasReachedProjectsTop = projects.scrollTop === 0;
+      
+    
+          if(hasReachedProjectsBottom) {
+          console.log('hasReachedProjectsBottom');
+          }
+          if(hasReachedProjectsTop) {
+          console.log('hasReachedProjectsTop');
+          }
+
+         if (isScrollingDown && hasReachedProjectsBottom) {
+        return; 
+      }
+      
+      if (!isScrollingDown && hasReachedProjectsTop) {
+        return; 
+      }
+
+      e.stopPropagation();
+
+      
+    }, {passive: false})
+
+  projects.addEventListener('wheel', (e) => {
+         const isScrollingUp = e.deltaY < 0;
+ const projectsScrollHeight = projects.scrollHeight - projects.clientHeight;
+      const hasReachedProjectsBottom = projects.scrollTop >= projectsScrollHeight;
+      const hasReachedProjectsTop = projects.scrollTop === 0;
+
+    
+          if(hasReachedProjectsBottom) {
+          console.log('hasReachedProjectsBottom');
+          }
+          if(hasReachedProjectsTop) {
+          console.log('hasReachedProjectsTop');
+          }
+
+       if (isScrollingUp && hasReachedProjectsBottom) {
+        return; 
+      }
+      
+      if (!isScrollingUp && hasReachedProjectsTop) {
+        return; 
+      }
+
+      e.stopPropagation();
+
+    
+  }, {passive: false})
+  }
+
+
+</script>
+ -->

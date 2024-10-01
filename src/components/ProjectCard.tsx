@@ -1,13 +1,14 @@
 import React from 'react';
-import type { Projects } from './Projects.astro';
+import type { Project } from '../types';
 
 interface ProjectCardProps {
-	project: Projects;
+	project: Project;
 }
-export default function PRojectCard({ project }: Readonly<ProjectCardProps>) {
+export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
 	return (
-		<div className='w-[400px] max-h-[224px] flex flex-col justify-end align-middle' style={{ backgroundImage: `url(${project.imgUrl ?? ''})`, backgroundSize: 'cover' }}>
-			<h1 className='text-2xl text-center m-2 p-2'>{project.name}</h1>
+		<div data-aos="fade-left" data-aos-duration="1500" className='border rounded-2xl mx-2 flex flex-col justify-end items-center'>
+			<img className='max-w-[600px]' src={project.imgUrl ?? ""} />
+			<h1 className='text-md text-center m-2 p-2'>{project.name}</h1>
 		</div>
 	);
 }
