@@ -1,0 +1,68 @@
+---
+import ProjectCard from './ProjectCard';
+
+export interface Projects  {
+  name: String,
+  imgUrl?: String,
+  techs?: String[],
+  text?: String
+}
+
+const projects = [
+  {
+    name: "South Shore Mechanical Services",
+    imgUrl: "https://picsum.photos/400/224",
+  },
+  {
+    name: "Captains Lakshore Rentals",
+    imgUrl: "https://picsum.photos/400/224",
+  },
+  {
+    name: "United Way Marquette",
+    imgUrl: "https://picsum.photos/400/224",
+  },
+]
+---
+
+<section class="scroll-container">
+  <div class="scroll-content  flex flex-row justify-evenly align-middle">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>
+
+<style>
+  .scroll-container {
+    height: 100vh;
+    overflow-x: clip;
+    position: relative;
+  }
+
+  .scroll-content {
+    display: flex;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    animation: scroll-animation linear;
+    animation-timeline: scroll();
+    animation-range: normal;
+  }
+
+  @keyframes scroll-animation {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% + 100vw));
+    }
+  }
+
+  .content-section {
+    flex: 0 0 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    /* Add styling for your sections */
+  }
+</style>
