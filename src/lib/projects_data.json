@@ -2,6 +2,7 @@
   {
     "name": "South Shore Mechanical Services",
     "imgKey": "ss-mech-svcs-screenshot.png",
+    "mobileImgKey": "mobile-ss-mech-svcs-screenshot.png",
     "techs": [
       "react",
       "typescript",
@@ -22,6 +23,7 @@
   {
     "name": "Captains Lakefront Properties",
     "imgKey": "captains-lakefront-screenshot.webp",
+    "mobileImgKey": "mobile-captains-lakefront-screenshot.png",
     "techs": ["react", "apollo", "graphql", "aws", "node", "express", "mongo"],
     "text": "A website for a vacation rental company. The application uses the MERN stack and is hosted on Heroku. The app uses AWS S3 for dynamic image loading and a CloudFront CDN.",
     "textPreview": "A MERN stack website for a vacation rental company.",
@@ -30,6 +32,7 @@
   {
     "name": "This Site!",
     "imgKey": "brahmvanhouzen-screenshot.png",
+    "mobileImgKey": "brahmvanhouzen-screenshot.png",
     "techs": [
       "react",
       "typescript",

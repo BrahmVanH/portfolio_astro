@@ -8,17 +8,33 @@ import profile_photo from '../images/profile_photo.webp';
 	<main class='flex justify-center items-center bg-transparent w-[80%] h-screen p-2'>
 		<div
 			class='[&>*]:mt-8 bg-white bg-opacity-30 w-[90%] h-full rounded-xl border-white shadow-md shadow-blue-50 ring-2 ring-offset-4 ring-offset-slate-100 bg-[linear-gradient(circle,rgba(1,156,213,0.8128501400560224)_30%,rgba(1,169,184,0.695203081232493)_90%,rgba(116,200,208,0.8548669467787114)_100%)]'>
-			<div class='w-full flex flex-row justify-evenly items-center '>
+			<div class='w-full flex flex-col-reverse md:flex-row justify-evenly items-center'>
 				<ContactCard />
 				<img class='max-w-[300px] rounded-2xl' src={profile_photo.src} />
 			</div>
 			<div>
 				<p class='text-lg text-center w-[60%] m-auto'>
 					My education was in Sports Physiology and Biomechanics, however I fell in love with software a few years after college. I enjoy working in both front and back end web development, and have
-					found myself working with native applications as well. I find a lot of fulfillment in the 'process' of building things, I always get excited at the chance to curate the fine details of a navbar hover effect
-					or the database storage logic of a rust application.
+					found myself working with native applications as well. I find a lot of fulfillment in the 'process' of building things, I always get excited at the chance to curate the fine details of a
+					navbar hover effect or the database storage logic of a rust application.
 				</p>
 			</div>
 		</div>
 	</main>
 </Layout>
+
+<script type='application/ld+json'>
+	{
+		"@context": "https://schema.org",
+		"@type": "ProfilePage",
+		"dateCreated": "2024-10-02T12:34:00-05:00",
+		"dateModified": "2024-10-02T14:53:00-05:00",
+		"mainEntity": {
+			"@type": "Person",
+			"name": "Brahm Van Houzen",
+			"alternateName": "brahmvanh",
+			"description": "Full Stack Web Developer from Michigan",
+			"image": "https://brahmvanhouzen.studio/images/profile_photo.webp",
+		}
+	}
+</script>
