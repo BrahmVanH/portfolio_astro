@@ -1,12 +1,24 @@
 ---
-import ContactCard from "../components/ContactCard.astro"
+import Layout from '@layouts/Layout.astro';
+import ContactCard from '../components/ContactCard.astro';
+import profile_photo from '../images/profile_photo.webp';
 ---
 
-<main class="flex flex-row justify-center items-center">
-  <ContactCard />
-  <div>
-    <img src='../images/profile_photo.webp' />
-    <h1 class="text-4xl text-end text-black">About Me</h1>
-    <p class="text-center">My education was in Sports Physiology and Biomechanics, however I fell in love with software a few years after college. I enjoy working in both front and back end web development, and have found myself working with native applications as well. I find a lot of fulfillment in the 'process' of building things, as I get excited to curate the fine details of a navbar hover effect or the database storage logic of a rust application.</p>
-  </div>
-</main>
+<Layout title='About'>
+	<main class='flex justify-center items-center bg-transparent w-[80%] h-screen p-2'>
+		<div
+			class='[&>*]:mt-8 bg-white bg-opacity-70 w-[90%] h-full rounded-xl border-white shadow-md shadow-blue-50 ring-2 ring-offset-4 ring-offset-slate-100 bg-[linear-gradient(circle,rgba(1,156,213,0.8128501400560224)_30%,rgba(1,169,184,0.695203081232493)_90%,rgba(116,200,208,0.8548669467787114)_100%)]'>
+			<div class='w-full flex flex-row justify-evenly items-center '>
+				<ContactCard />
+				<img class='max-w-[300px] rounded-2xl' src={profile_photo.src} />
+			</div>
+			<div>
+				<p class='text-center w-[50%] m-auto'>
+					My education was in Sports Physiology and Biomechanics, however I fell in love with software a few years after college. I enjoy working in both front and back end web development, and have
+					found myself working with native applications as well. I find a lot of fulfillment in the 'process' of building things, I always get excited at the chance to curate the fine details of a navbar hover effect
+					or the database storage logic of a rust application.
+				</p>
+			</div>
+		</div>
+	</main>
+</Layout>
