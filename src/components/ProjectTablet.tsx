@@ -18,21 +18,20 @@ export default function ProjectTablet({
 }: Readonly<ProjectTabletProps>) {
   const [screenshotUrl, setScreenshotUrl] = React.useState<string>("");
   const [techIcons, setTechIcons] = React.useState<string[]>([]);
+  const [aosAttr, setAosAttr] = React.useState<Record<string, string>>({});
 
   // This is a workaround for AOS hydration issues in this component
   const [isClient, setIsClient] = React.useState<boolean>(false);
 
   const baseAnchorClasses = `max-h-[30%] z-[1000] border rounded-2xl mx-4 flex ${
     zoomOutDirection === "right" ? "flex-row" : "flex-row-reverse"
-  } justify-between overflow-hidden items-center shadow-lg transition-transform duration-300 hover:shadow-xl hover:scale-[1.03]`;
+  } justify-between overflow-hidden items-center shadow-lg transition-transform  duration-300 hover:shadow-xl hover:scale-[1.03]`;
 
-  const aos_attr = isClient
-    ? {
-        "data-aos-delay": "500",
-        "data-aos-duration": "1000",
-        "data-aos": `zoom-out-${zoomOutDirection}`,
-      }
-    : {};
+  const aos_attr = {
+    "data-aos-delay": "500",
+    "data-aos-duration": "1000",
+    "data-aos": `zoom-out-${zoomOutDirection}`,
+  };
 
   async function loadScreenshot(imagePath: string) {
     if (screenshots) console.log("screenshots", screenshots);
@@ -42,6 +41,12 @@ export default function ProjectTablet({
     } else {
     }
   }
+
+  React.useEffect(() => {
+    if (isClient) {
+      setAosAttr(aos_attr);
+    }
+  }, [isClient]);
 
   React.useEffect(() => {
     setIsClient(true);

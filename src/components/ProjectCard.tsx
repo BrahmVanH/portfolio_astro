@@ -13,13 +13,12 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   const [screenshotUrl, setScreenshotUrl] = React.useState<string>("");
   const [isClient, setIsClient] = React.useState<boolean>(false);
+  const [aosAttr, setAosAttr] = React.useState<Record<string, string>>({});
 
-  const aos_attr = isClient
-    ? {
-        "data-aos": "fade-left",
-        "data-aos-duration": "1500",
-      }
-    : {};
+  const aos_attr = {
+    "data-aos": "fade-left",
+    "data-aos-duration": "1500",
+  };
 
   async function loadScreenshot(imagePath: string) {
     if (screenshots) console.log("screenshots", screenshots);
@@ -29,6 +28,12 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
     } else {
     }
   }
+
+  React.useEffect(() => {
+    if (isClient) {
+      setAosAttr(aos_attr);
+    }
+  }, [isClient]);
 
   React.useEffect(() => {
     setIsClient(true);
