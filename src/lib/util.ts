@@ -18,6 +18,7 @@ import aws_cloudfront_s3_lambda_svg from "../images/svg/aws-lambda-cloudfront-s3
 import ss_mech_svcs_screenshot from "../images/ss-mech-svcs-screenshot.png";
 import captains_lakefront_screenshot from "../images/captains-lakefront-screenshot.webp";
 import daily_journal_screenshot from "../images/daily-journal-screenshot.jpg";
+import brahmvanhouzen_screenshot from "../images/brahmvanhouzen-screenshot.png";
 
 export function create_techs_icons_array(techs: string[]) {
   const techs_icons = techs.map((tech) => {
@@ -72,6 +73,8 @@ export function get_image(imgKey: string) {
       return captains_lakefront_screenshot;
     case "daily-journal-screenshot":
       return daily_journal_screenshot;
+    case "brahmvanhouzen-screenshot":
+      return brahmvanhouzen_screenshot;
     default:
       return "";
   }

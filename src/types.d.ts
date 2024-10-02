@@ -6,4 +6,6 @@ export interface Project {
 	imgKey: string;
 	techs?: string[];
 	text?: string;
+	textPreview?: string;
+	projectUrl?: string;
 }

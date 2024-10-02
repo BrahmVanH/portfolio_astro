@@ -7,27 +7,26 @@ const contactInfo = {
 ---
 
 <div class='flex flex-col sm:flex-row justify-center items-center sm:items-start'>
-	<div class=' flex flex-row justify-evenly items-start'>
+	<div class='flex flex-row justify-evenly items-start'>
 		<div class='flex flex-col justify-center items-center'>
-			<h1 class='text-2xl'>Brahm Van Houzen</h1>
-			<div class='contact-links'>
-				<ul class='text-md'>
-					<li>
-						<a target='_blank' rel='noreferrer' href={`tel:${contactInfo.phone}`} class='pl-4 flex flex-row'>
-							<p class='mt-4 ml-4'>{contactInfo.phone}</p>
-						</a>
-					</li>
-					<li>
-						<a target='_blank' rel='noreferrer' href={`mailto:${contactInfo.email}`} class='pl-4 flex flex-row'>
-							<p class='mt-4 ml-4'>{contactInfo.email}</p>
-						</a>
-					</li><li>
-						<a target='_blank' rel='noreferrer' href={`github.com/brahmvanh`} class='pl-4 flex flex-row'>
-							<p class='mt-4 ml-4'>{contactInfo.github}</p>
-						</a>
-					</li>
-				</ul>
-			</div>
+			<h1 class='text-3xl'>Brahm Van Houzen</h1>
+
+			<ul class='text-md mt-4 hover:[&>*]:underline'>
+				<li>
+					<a target='_blank' rel='noreferrer' href={`tel:${contactInfo.phone}`} class='pl-4 flex flex-row'>
+						<p class='mt-4 ml-4'>{contactInfo.phone}</p>
+					</a>
+				</li>
+				<li>
+					<a target='_blank' rel='noreferrer' href={`mailto:${contactInfo.email}`} class='pl-4 flex flex-row'>
+						<p class='mt-4 ml-4'>{contactInfo.email}</p>
+					</a>
+				</li><li>
+					<a target='_blank' rel='noreferrer' href={`github.com/brahmvanh`} class='pl-4 flex flex-row'>
+						<p class='mt-4 ml-4'>{contactInfo.github}</p>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>

@@ -28,24 +28,34 @@ export default function ProjectTablet({
   }, [project.techs]);
 
   return (
-    <div
+    // <div
+    //   data-aos-delay="500"
+    //   data-aos-duration="1000"
+    //   data-aos={`zoom-out-${zoomOutDirection}`}
+    //   className={`w-full border rounded-2xl mx-2 flex ${zoomOutDirection == "right" ? "flex-row" : "flex-row-reverse"} justify-between overflow-hidden items-center shadow-lg transition-transform duration-300 hover:shadow-xl hover:scale-150`}
+    // >
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={project.projectUrl}
       data-aos-delay="500"
       data-aos-duration="1000"
       data-aos={`zoom-out-${zoomOutDirection}`}
-      className={`w-full border rounded-2xl mx-2 flex ${zoomOutDirection == "right" ? "flex-row" : "flex-row-reverse"} justify-between overflow-hidden items-center`}
+      className={`w-full border rounded-2xl mx-2 flex ${zoomOutDirection == "right" ? "flex-row" : "flex-row-reverse"} justify-between overflow-hidden items-center shadow-lg transition-transform duration-300 hover:shadow-xl hover:scale-150`}
     >
       <img className="max-w-[400px] max-h-[400px]" src={screenshotUrl ?? ""} />
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center [&>ul>li]:hover:scale-105 [&>ul>li]:hover:transition-transform [&>ul>li]:hover:duration-300">
         <h1 className="text-md text-center m-2 p-2">{project.name}</h1>
-        <ul className="flex flex-row [&>li]:ml-2 last:mr-2">
+        <ul className="flex flex-row [&>ul>li]:ml-2 last:mr-2 ">
           {techIcons.map((tech, index) => (
-            <li key={index}>
+            <li className="" key={index}>
               <img src={tech} className="w-5 h-5" />
             </li>
           ))}
         </ul>
         <p className="m-4">{project.text}</p>
       </div>
-    </div>
+    </a>
+    // </div>
   );
 }

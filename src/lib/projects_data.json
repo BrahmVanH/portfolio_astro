@@ -14,29 +14,33 @@
       "express",
       "mongo"
     ],
-    "text": "A website for a local Mechanical Contracting company. The app is build with Gatsby and Tailwind and uses a Node Express Lambda function to handle form submissions and image loading."
-  },
-  {
-    "name": "Captains Lakefront Properties",
-    "imgKey": "captains-lakefront-screenshot.webp",
-    "techs": ["react", "apollo", "graphQL", "s3", "node", "express", "mongo"],
-    "text": "A website for a vacation rental company. The application uses the MERN stack and is hosted on Heroku. The app uses AWS S3 for dynamic image loading and a CloudFront CDN."
+    "text": "A website for a local Mechanical Contracting company. The app is build with Gatsby and Tailwind and uses a Node Express Lambda function to handle form submissions and image loading.",
+    "textPreview": "A Gatsby SSG website for a local Mechanical Contracting company.",
+    "projectUrl": "https://www.southshoremechanical.services"
   },
 
   {
-    "name": "Daily Journal App",
-    "imgKey": "daily-journal-screenshot.jpg",
+    "name": "Captains Lakefront Properties",
+    "imgKey": "captains-lakefront-screenshot.webp",
+    "techs": ["react", "apollo", "graphql", "aws", "node", "express", "mongo"],
+    "text": "A website for a vacation rental company. The application uses the MERN stack and is hosted on Heroku. The app uses AWS S3 for dynamic image loading and a CloudFront CDN.",
+    "textPreview": "A MERN stack website for a vacation rental company.",
+    "projectUrl": "https:/lakesuperiorcaptains.com/.com"
+  },
+  {
+    "name": "This Site!",
+    "imgKey": "brahmvanhouzen-screenshot.png",
     "techs": [
       "react",
       "typescript",
-      "graphql",
-      "apollo",
+      "astro",
+      "tailwind",
       "aws",
       "node",
-      "express",
-      "mongo",
-      "serverless"
+      "express"
     ],
-    "text": "This is a basic daily journal app. It's meant to be a companion to a note app that writes to markdown. The application has a small form and an upload for markdown to render into a journal page."
+    "text": "This is my personal portfolio site, as you can see. The site is built with Astro and Tailwind and is hosted on Netlify. The site uses a Node and Express for Server-Side Rendering functionality and dynamically loads images from S3.",
+    "textPreview": "Built with Astro and TailwindCss.",
+    "projectUrl": "/"
   }
 ]

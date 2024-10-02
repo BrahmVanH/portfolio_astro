@@ -1,27 +1,44 @@
 import React from "react";
 import type { Project } from "../types";
 
+import "../styles/project_card.css";
+
 interface ProjectCardProps {
   project: Project;
 }
 export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   const [screenshotUrl, setScreenshotUrl] = React.useState<string>("");
   React.useEffect(() => {
-		console.log("project.imgKey", project.imgKey);
+    console.log("project.imgKey", project.imgKey);
     import(`../images/${project.imgKey}`).then((module) => {
-			console.log(module.default);
+      console.log(module.default);
       setScreenshotUrl(module.default.src);
     });
   }, [project.imgKey]);
 
   return (
-    <div
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={project.projectUrl}
+      id="project-card"
       data-aos="fade-left"
       data-aos-duration="1500"
-      className="border rounded-2xl mx-2 flex flex-col justify-end items-center hover:scale-105 hover:transform transition-transform duration-500 ease-in-out"
+      className="relative border rounded-2xl mx-2 group"
     >
-      <img className="rounded-2xl max-w-[600px] max-h-[300px]" src={screenshotUrl} />
-      <h1 className="text-md text-center m-2 p-2">{project.name}</h1>
-    </div>
+      <img
+        className="rounded-2xl max-h-[700px] h-[400px] max-w-[5000px]"
+        src={screenshotUrl}
+        alt={project.name}
+      />
+      <div
+        className="absolute rounded-2xl inset-0 bg-black/45 opacity-0 transition-opacity 
+                 duration-300 group-hover:opacity-100 flex flex-col 
+                 justify-center items-center text-white"
+      >
+        <h1 className="text-xl font-bold mb-2">{project.name}</h1>
+        <p className="text-sm p-2">{project.textPreview}</p>
+      </div>
+    </a>
   );
 }
