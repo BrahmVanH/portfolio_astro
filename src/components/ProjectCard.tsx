@@ -3,19 +3,41 @@ import type { Project } from "../types";
 
 import "../styles/project_card.css";
 
+const screenshots = import.meta.glob<{ default: ImageMetadata }>(
+  "../images/*.{png,jpg,jpeg,webp}",
+);
+
 interface ProjectCardProps {
   project: Project;
 }
 export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   const [screenshotUrl, setScreenshotUrl] = React.useState<string>("");
-  React.useEffect(() => {
-    import(`../images/${project.imgKey}`).then((module) => {
-      setScreenshotUrl(module.default.src);
-    }).catch((error) => {
-      console.error("Error loading image", error);
-    });
-  }, [project.imgKey]);
+  const [isClient, setIsClient] = React.useState<boolean>(false);
 
+  const aos_attr = isClient
+    ? {
+        "data-aos": "fade-left",
+        "data-aos-duration": "1500",
+      }
+    : {};
+
+  async function loadScreenshot(imagePath: string) {
+    if (screenshots) console.log("screenshots", screenshots);
+    const moduleImg = await screenshots[imagePath]();
+    if (moduleImg) {
+      setScreenshotUrl(moduleImg.default.src);
+    } else {
+    }
+  }
+
+  React.useEffect(() => {
+    setIsClient(true);
+    const imagePath = `../images/${project.imgKey}`;
+
+    if (screenshots[imagePath]) {
+      loadScreenshot(imagePath);
+    }
+  }, [project.imgKey]);
   return (
     <>
       {screenshotUrl ? (
@@ -24,8 +46,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
           rel="noreferrer"
           href={project.projectUrl}
           id="project-card"
-          data-aos="fade-left"
-          data-aos-duration="1500"
+          {...aos_attr}
           className="relative border rounded-2xl mx-2 group"
         >
           <img

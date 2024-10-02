@@ -44,6 +44,7 @@ export default function ProjectTablet({
   }
 
   React.useEffect(() => {
+    setIsClient(true);
     const imagePath = `../images/${project.imgKey}`;
 
     if (screenshots[imagePath]) {
