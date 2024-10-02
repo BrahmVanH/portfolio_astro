@@ -28,14 +28,19 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="w-screen h-screen bg-transparent flex flex-row justify-center">
-
+		<div class='w-screen h-screen bg-transparent flex flex-row justify-center'>
 			<Nav />
 			<slot />
 		</div>
 		<script>
 			import AOS from 'aos';
-			AOS.init();
+			document.addEventListener('DOMContentLoaded', () => {
+				AOS.init({
+					duration: 1000,
+					once: true,
+					disable: window.innerWidth < 768,
+				});
+			});
 		</script>
 	</body>
 </html>

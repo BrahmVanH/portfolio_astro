@@ -9,10 +9,10 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   const [screenshotUrl, setScreenshotUrl] = React.useState<string>("");
   React.useEffect(() => {
-    console.log("project.imgKey", project.imgKey);
     import(`../images/${project.imgKey}`).then((module) => {
-      console.log(module.default);
       setScreenshotUrl(module.default.src);
+    }).catch((error) => {
+      console.error("Error loading image", error);
     });
   }, [project.imgKey]);
 

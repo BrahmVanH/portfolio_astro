@@ -1,9 +1,5 @@
 ---
-const contactInfo = {
-	phone: '906-236-2760',
-	email: 'brahm@brahmvanhouzen.studio',
-	github: 'github.com/brahmvanh',
-};
+import contactInfo from '../lib/contact_info.json';
 ---
 
 <div class='flex flex-col sm:flex-row justify-center items-center sm:items-start'>
@@ -11,7 +7,7 @@ const contactInfo = {
 		<div class='flex flex-col justify-center items-center'>
 			<h1 class='text-3xl'>Brahm Van Houzen</h1>
 
-			<ul class='text-md mt-4 hover:[&>*]:underline'>
+			<ul class='text-sm mt-4 hover:[&>*]:underline'>
 				<li>
 					<a target='_blank' rel='noreferrer' href={`tel:${contactInfo.phone}`} class='pl-4 flex flex-row'>
 						<p class='mt-4 ml-4'>{contactInfo.phone}</p>

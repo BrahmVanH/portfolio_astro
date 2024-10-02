@@ -1,10 +1,23 @@
 ---
+import contactInfo from '../lib/contact_info.json'
 ---
 
-
-<section data-aos="zoom-in" class="w-full">
-  <ul class="flex flex-row justify-end items-end [&>li]:ml-2 last:ml-2 pr-4">
-    <li><a>Phone</a></li>
-    <li><a>Email</a></li>
-  </ul>
+<section data-aos='zoom-in' class='w-full'>
+	<ul class='flex flex-row justify-end items-end [&>li]:ml-2 last:ml-2 pr-4 text-md mt-4 hover:[&>*]:underline'>
+			<li>
+				<a target='_blank' rel='noreferrer' href={`tel:${contactInfo.phone}`} class='pl-4 flex flex-row'>
+					<p class='mt-4 ml-4'>{contactInfo.phone}</p>
+				</a>
+			</li>
+			<li>
+				<a target='_blank' rel='noreferrer' href={`mailto:${contactInfo.email}`} class='pl-4 flex flex-row'>
+					<p class='mt-4 ml-4'>{contactInfo.email}</p>
+				</a>
+			</li><li>
+				<a target='_blank' rel='noreferrer' href={`github.com/brahmvanh`} class='pl-4 flex flex-row'>
+					<p class='mt-4 ml-4'>{contactInfo.github}</p>
+				</a>
+			</li>
+		</ul>
+	</ul>
 </section>
