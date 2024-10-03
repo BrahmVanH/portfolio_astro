@@ -1,9 +1,6 @@
 import React from "react";
 import type { Project } from "../types";
 
-import crossIcon from "../icons/cross.svg";
-import "../styles/project_card.css";
-
 const screenshots = import.meta.glob<{ default: ImageMetadata }>(
   "../images/*.{png,jpg,jpeg,webp}",
 );
@@ -31,7 +28,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   }
 
   React.useEffect(() => {
-    if (window.innerWidth < 778) {
+    if (window.innerWidth < 640) {
       setIsSmallViewPort(true);
     } else {
       setIsSmallViewPort(false);
@@ -67,7 +64,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
           href={project.projectUrl}
           id="project-card"
           {...aosAttr}
-          className="flex flex-col-reverse md:flex-col md:relative overflow-hidden rounded-2xl m-2 group w-full lg:w-min"
+          className="flex flex-col-reverse md:flex-col md:relative overflow-hidden sm:overflow-visible rounded-2xl m-2 group lg:w-min"
         >
           {/* <div className="absolute right-20 md:hidden">
             <button>
@@ -81,7 +78,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
             </button>
           </div> */}
           <img
-            className="md:rounded-2xl  lg:max-h-[700px] lg:h-[400px] lg:max-w-[5000px]"
+            className="md:rounded-2xl  md:max-h-[700px] md:h-[400px] md:max-w-[5000px]"
             src={screenshotUrl}
             alt={project.name}
           />
@@ -90,7 +87,9 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
       md:duration-300 md:group-hover:opacity-100 flex flex-col 
       justify-center items-center text-white"
           >
-            <h1 className="text-2xl  md:text-xl font-bold mb-2">{project.name}</h1>
+            <h1 className="text-2xl  md:text-xl font-bold mb-2">
+              {project.name}
+            </h1>
             <p className="text-sm p-2">{project.textPreview}</p>
           </div>
         </a>
