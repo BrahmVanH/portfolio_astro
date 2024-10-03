@@ -29,10 +29,10 @@ export default function ProjectTablet({
 
   const baseAnchorClasses = `max-h-[30%] z-[1000] border rounded-2xl mx-4 flex ${
     zoomOutDirection === "right" ? "flex-row" : "flex-row-reverse"
-  } justify-between overflow-hidden items-center shadow-lg transition-transform  duration-300 hover:shadow-xl hover:scale-[1.03]
+  } justify-between overflow-hidden  opacity-100 items-center shadow-lg transition-transform  duration-300 hover:shadow-xl hover:scale-[1.03]
   `;
 
-  const mobileBaseAnchorClasses = `max-h-[50%] z-[1000] border rounded-2xl mx-4 flex flex-col-reverse 
+  const mobileBaseAnchorClasses = ` opacity-100 max-h-[50%] z-[1000] border rounded-2xl mx-4 flex flex-col-reverse 
    overflow-hidden items-center `;
 
   const aos_attr = {
@@ -90,10 +90,11 @@ export default function ProjectTablet({
   }, [project.techs]);
 
   return (
+    
     <a
       target="_blank"
       rel="noreferrer"
-      {...aosAttr}
+      // {...aosAttr}
       href={project.projectUrl}
       className={anchorClasses}
     >
