@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
     const moduleImg = await screenshots[imagePath]();
     if (moduleImg) {
       setScreenshotUrl(moduleImg.default.src);
-    } 
+    }
   }
 
   React.useEffect(() => {
@@ -46,13 +46,11 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
       ? `../images/${project.mobileImgKey}`
       : `../images/${project.imgKey}`;
 
-
     if (screenshots[imagePath]) {
       loadScreenshot(imagePath);
     }
   }, [project.imgKey, project.mobileImgKey, isSmallViewPort]);
 
-  
   return (
     <>
       {screenshotUrl ? (
@@ -62,7 +60,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
           href={project.projectUrl}
           id="project-card"
           {...aosAttr}
-          className="flex flex-col-reverse md:flex-col md:relative overflow-hidden sm:overflow-visible rounded-2xl m-2 group lg:w-min"
+          className="flex flex-col-reverse lg:flex-col lg:relative overflow-hidden sm:overflow-visible rounded-2xl m-2 group lg:w-min"
         >
           {/* <div className="absolute right-20 md:hidden">
             <button>
@@ -76,16 +74,16 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
             </button>
           </div> */}
           <img
-            className="md:rounded-2xl  md:max-h-[700px] md:h-[400px] md:max-w-[5000px]"
+            className="lg:rounded-2xl  lg:max-h-[700px] lg:h-[400px] lg:max-w-[5000px]"
             src={screenshotUrl}
             alt={project.name}
           />
           <div
-            className="md:absolute md:rounded-2xl p-2 md:p-0 inset-0 bg-black/45 md:opacity-0 md:transition-opacity 
-      md:duration-300 md:group-hover:opacity-100 flex flex-col 
+            className="lg:absolute lg:rounded-2xl p-2 lg:p-0 inset-0 bg-black/45 lg:opacity-0 lg:transition-opacity 
+      lg:duration-300 lg:group-hover:opacity-100 flex flex-col 
       justify-center items-center text-white"
           >
-            <h1 className="text-2xl  md:text-xl font-bold mb-2">
+            <h1 className="text-2xl  lg:text-xl font-bold mb-2">
               {project.name}
             </h1>
             <p className="text-sm p-2">{project.textPreview}</p>

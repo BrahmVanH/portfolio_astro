@@ -25,7 +25,7 @@ import projects from '../lib/projects_data.json';
 </section>
 
 <style>
-	@media screen and (min-width: 1022px) {
+	@media screen and (min-width: 1280px) {
 		.scroll-container {
 			overflow-x: scroll;
 			position: relative;
@@ -58,7 +58,7 @@ import projects from '../lib/projects_data.json';
 </style>
 
 <script>
-	const projects = window.innerWidth > 1022 ? document.getElementById('projects-section') : null;
+	const projects = window.innerWidth > 1280 ? document.getElementById('projects-section') : null;
 
 	if (!projects) {
 		console.log('No projects section found');
