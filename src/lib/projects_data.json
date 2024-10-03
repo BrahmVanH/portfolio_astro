@@ -32,7 +32,7 @@
   {
     "name": "This Site!",
     "imgKey": "brahmvanhouzen-screenshot.png",
-    "mobileImgKey": "brahmvanhouzen-screenshot.png",
+    "mobileImgKey": "mobile-brahmvanhouzen-screenshot.png",
     "techs": [
       "react",
       "typescript",
