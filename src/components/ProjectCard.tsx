@@ -67,7 +67,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
           href={project.projectUrl}
           id="project-card"
           {...aosAttr}
-          className="flex flex-col md:relative border rounded-2xl mx-2 group w-full lg:w-min"
+          className="flex flex-col-reverse md:flex-col md:relative overflow-hidden rounded-2xl m-2 group w-full lg:w-min"
         >
           {/* <div className="absolute right-20 md:hidden">
             <button>
@@ -81,16 +81,16 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
             </button>
           </div> */}
           <img
-            className="rounded-2xl  lg:max-h-[700px] lg:h-[400px] lg:max-w-[5000px]"
+            className="md:rounded-2xl  lg:max-h-[700px] lg:h-[400px] lg:max-w-[5000px]"
             src={screenshotUrl}
             alt={project.name}
           />
           <div
-            className="md:absolute rounded-2xl inset-0 md:bg-black/45 md:opacity-0 md:transition-opacity 
+            className="md:absolute md:rounded-2xl p-2 md:p-0 inset-0 bg-black/45 md:opacity-0 md:transition-opacity 
       md:duration-300 md:group-hover:opacity-100 flex flex-col 
       justify-center items-center text-white"
           >
-            <h1 className="text-xl font-bold mb-2">{project.name}</h1>
+            <h1 className="text-2xl  md:text-xl font-bold mb-2">{project.name}</h1>
             <p className="text-sm p-2">{project.textPreview}</p>
           </div>
         </a>
