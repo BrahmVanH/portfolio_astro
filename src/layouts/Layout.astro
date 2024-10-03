@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 
 import '../styles/microtip.css';
 import siteMetadata from '../lib/site_metadata.json';
+import MobileNav from '../components/MobileNav';
 
 interface Props {
 	title: string;
@@ -11,8 +12,8 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-<!-- structured data ideas for this site -->
-<!-- https://webmasters.stackexchange.com/questions/104786/what-is-the-proper-schema-type-for-a-personal-portfolio --><!doctype html>
+
+<!-- structured data ideas for this site --><!-- https://webmasters.stackexchange.com/questions/104786/what-is-the-proper-schema-type-for-a-personal-portfolio --><!doctype html>
 <html lang='en'>
 	<head>
 		<meta charset='UTF-8' />
@@ -35,8 +36,9 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class='w-screen h-screen bg-transparent flex flex-col sm:flex-row items-center sm:items-baseline sm:justify-center'>
+		<div class='w-screen h-screen bg-transparent flex flex-col sm:flex-row items-center mt-4 sm:items-start sm:justify-center'>
 			<Nav />
+			<MobileNav client:load />
 			<slot />
 		</div>
 		<script>

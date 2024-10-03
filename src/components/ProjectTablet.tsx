@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { ImageMetadata } from "astro";
 
 import type { Project } from "../types";
@@ -19,6 +19,8 @@ export default function ProjectTablet({
   const [screenshotUrl, setScreenshotUrl] = React.useState<string>("");
   const [techIcons, setTechIcons] = React.useState<string[]>([]);
   const [aosAttr, setAosAttr] = React.useState<Record<string, string>>({});
+  const [anchorClasses, setAnchorClasses] = React.useState<string>("");
+  const [isSmallViewPort, setIsSmallViewPort] = React.useState<boolean>(false);
 
   // This is a workaround for AOS hydration issues in this component
   const [isClient, setIsClient] = React.useState<boolean>(false);
@@ -26,6 +28,9 @@ export default function ProjectTablet({
   const baseAnchorClasses = `max-h-[30%] z-[1000] border rounded-2xl mx-4 flex ${
     zoomOutDirection === "right" ? "flex-row" : "flex-row-reverse"
   } justify-between overflow-hidden items-center shadow-lg transition-transform  duration-300 hover:shadow-xl hover:scale-[1.03]`;
+
+  const mobileBaseAnchorClasses = `max-h-[30%] z-[1000] border rounded-2xl mx-4 flex flex-col
+   overflow-hidden items-center `;
 
   const aos_attr = {
     "data-aos-delay": "500",
@@ -38,24 +43,41 @@ export default function ProjectTablet({
     const moduleImg = await screenshots[imagePath]();
     if (moduleImg) {
       setScreenshotUrl(moduleImg.default.src);
-    } else {
     }
   }
 
+  useEffect(() => {
+    if (isSmallViewPort) {
+      setAnchorClasses(mobileBaseAnchorClasses);
+    } else {
+      setAnchorClasses(baseAnchorClasses);
+    }
+  }, [isSmallViewPort]);
+
   React.useEffect(() => {
-    if (isClient) {
+    if (window.innerWidth < 640) {
+      setIsSmallViewPort(true);
+    } else {
+      setIsSmallViewPort(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (isClient && !isSmallViewPort) {
       setAosAttr(aos_attr);
     }
   }, [isClient]);
 
   React.useEffect(() => {
     setIsClient(true);
-    const imagePath = `../images/${project.imgKey}`;
+    const imagePath = isSmallViewPort
+      ? `../images/${project.mobileImgKey}`
+      : `../images/${project.imgKey}`;
 
     if (screenshots[imagePath]) {
       loadScreenshot(imagePath);
     }
-  }, [project.imgKey]);
+  }, [project.imgKey, project.mobileImgKey, isSmallViewPort]);
 
   React.useEffect(() => {
     if (!project.techs) return;
@@ -68,15 +90,15 @@ export default function ProjectTablet({
       target="_blank"
       rel="noreferrer"
       href={project.projectUrl}
-      {...aos_attr}
-      className={baseAnchorClasses}
+      {...aosAttr}
+      className={anchorClasses}
     >
       <img className="max-w-[50%] h-full m-0" src={screenshotUrl} />
       <div className="flex flex-col justify-center items-center [&>ul>li]:hover:scale-[1.50] [&>ul>li]:hover:p-2 [&>ul>li]:hover:transition-all  [&>ul>li]:hover:duration-300">
         <h1 className="text-md text-center m-2 p-2">{project.name}</h1>
         <ul className="flex flex-row [&>ul>li]:ml-2 last:mr-2 ">
           {techIcons.map((tech, index) => (
-            <li className="" key={index}>
+            <li className="p-2 sm:p-0" key={index}>
               <img src={tech} className="w-5 h-5" />
             </li>
           ))}

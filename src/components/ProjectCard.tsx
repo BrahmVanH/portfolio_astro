@@ -23,8 +23,7 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
     const moduleImg = await screenshots[imagePath]();
     if (moduleImg) {
       setScreenshotUrl(moduleImg.default.src);
-    } else {
-    }
+    } 
   }
 
   React.useEffect(() => {
@@ -47,14 +46,13 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
       ? `../images/${project.mobileImgKey}`
       : `../images/${project.imgKey}`;
 
+
     if (screenshots[imagePath]) {
       loadScreenshot(imagePath);
     }
   }, [project.imgKey, project.mobileImgKey, isSmallViewPort]);
 
-  React.useEffect(() => {
-    console.log("isSmallViewPort", isSmallViewPort);
-  }, [isSmallViewPort]);
+  
   return (
     <>
       {screenshotUrl ? (

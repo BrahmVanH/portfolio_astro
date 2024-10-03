@@ -8,74 +8,72 @@ import projects from '../lib/projects_data.json';
 ---
 
 <!-- <section data-aos='fade-left' data-aos-duration='1000'> -->
-	<section>
-		<div class='w-full flex flex-col sm:flex-row justify-end text-2xl text-center text-nowrap sm:text-end sm:m-4 [&>span]sm:mb-4 [&>span]:mr-4'>
-			<span>
-				<p>A few of my</p>
-			</span>
-			<span>
-				<a aria-label='See the rest' data-microtip-position='top' data-microtip-size='small' role='tooltip' class='hover:underline' href='/projects'>projects.</a>
-			</span>
+<section>
+	<div class='w-full flex flex-col sm:flex-row justify-end text-2xl text-center text-nowrap sm:text-end sm:m-4 [&>span]sm:mb-4 [&>span]:mr-4'>
+		<span>
+			<p>A few of my</p>
+		</span>
+		<span>
+			<a aria-label='See the rest' data-microtip-position='top' data-microtip-size='small' role='tooltip' class='hover:underline' href='/projects'>projects.</a>
+		</span>
+	</div>
+	<div id='projects-section' class='scroll-container'>
+		<div class='scroll-content flex flex-col lg:flex-row justify-evenly items-center'>
+			{projects.map((project) => <ProjectCard client:load project={project} />)}
 		</div>
-		<div id='projects-section' class='scroll-container'>
-			<div class='scroll-content flex flex-col lg:flex-row justify-evenly items-center'>
-				{projects.map((project) => <ProjectCard client:load project={project} />)}
-			</div>
-		</div>
-	</section>
-
-	<style>
-		@media screen and (min-width: 1022px) {
-			.scroll-container {
-				overflow-x: scroll;
-				position: relative;
-			}
-
-			.scroll-content {
-				display: flex;
-				position: sticky;
-				top: 0;
-				animation: scroll-animation linear;
-				animation-timeline: scroll();
-				animation-range: normal;
-			}
-
-			@keyframes scroll-animation {
-				from {
-					transform: translateX(0);
-				}
-				to {
-					transform: translateX(calc(-10% + 100vw));
-				}
-			}
-
-
-			@media (prefers-reduced-motion: no-preference) {
-				.scroll-container {
-					scroll-behavior: smooth;
-				}
-			}
-		}
-	</style>
-
-	<script>
-		const projects = window.innerWidth > 1022 ? document.getElementById('projects-section') : null;
-
-		if (!projects) {
-			throw new Error('Projects section not found');
-		}
-
-		if (projects) {
-			projects.addEventListener(
-				'wheel',
-				(e) => {
-					if (e.deltaY !== 0) {
-						e.preventDefault();
-						projects.scrollLeft += e.deltaY;
-					}
-				},
-				{ passive: false }
-			);
-		}
-	</script>
+	</div>
 </section>
+
+<style>
+	@media screen and (min-width: 1022px) {
+		.scroll-container {
+			overflow-x: scroll;
+			position: relative;
+		}
+
+		.scroll-content {
+			display: flex;
+			position: sticky;
+			top: 0;
+			animation: scroll-animation linear;
+			animation-timeline: scroll();
+			animation-range: normal;
+		}
+
+		@keyframes scroll-animation {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(calc(-10% + 100vw));
+			}
+		}
+
+		@media (prefers-reduced-motion: no-preference) {
+			.scroll-container {
+				scroll-behavior: smooth;
+			}
+		}
+	}
+</style>
+
+<script>
+	const projects = window.innerWidth > 1022 ? document.getElementById('projects-section') : null;
+
+	if (!projects) {
+		console.log('No projects section found');
+	}
+
+	if (projects) {
+		projects.addEventListener(
+			'wheel',
+			(e) => {
+				if (e.deltaY !== 0) {
+					e.preventDefault();
+					projects.scrollLeft += e.deltaY;
+				}
+			},
+			{ passive: false }
+		);
+	}
+</script>
